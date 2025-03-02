@@ -13,7 +13,6 @@ import DNAVisualizator from "./components/ui/DNAVisualizator";
 import { stringToVectorDna, vectorToMatrixDna } from "./lib/utils/mutant.utils";
 import { Chart as ChartJS, ArcElement, Legend, Tooltip } from "chart.js";
 import { useMutant } from "./hooks/useMutant";
-import { Doughnut } from "react-chartjs-2";
 import DNAStats from "./components/ui/DNAStats";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
