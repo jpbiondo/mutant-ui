@@ -355,7 +355,7 @@ TCACTG"
               </div>
             ) : (
               <div className="flex flex-col items-center text-red-800">
-                <DnaOff className="h-14 w-14" />
+                <Dna className="h-14 w-14" />
                 <span className="font-bold text-2xl">Human</span>
               </div>
             )}
