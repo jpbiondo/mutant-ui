@@ -347,7 +347,7 @@ TCACTG"
         <dialog ref={resultModalRef} className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Your results just arrived!</h3>
-            <p className="py-4 text-center text-md">You are a...</p>
+            <p className="py-4 text-center text-md mb-4">You are a...</p>
             {isMutant ? (
               <div className="flex flex-col items-center text-green-800">
                 <DnaOff className="h-14 w-14" />
