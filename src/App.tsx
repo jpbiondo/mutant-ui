@@ -1,6 +1,7 @@
 import {
   Atom,
   ChartLine,
+  Construction,
   Dna,
   DnaOff,
   FlaskConical,
@@ -22,15 +23,7 @@ function App() {
   const [manualInputTab, setManualInputTab] = useState<boolean>(true);
   const [dnaMatrix, setDnaMatrix] = useState<string[][]>([]);
   const resultModalRef = useRef<HTMLDialogElement | null>(null);
-  const {
-    isMutant,
-    totalHumanCount,
-    totalMutantCount,
-    pending,
-    error,
-    testDna,
-    getStats,
-  } = useMutant();
+  const { isMutant, pending, error, testDna } = useMutant();
 
   useEffect(() => {
     if (dnaInput) {
@@ -41,10 +34,6 @@ function App() {
 
     setDnaMatrix([]);
   }, [dnaInput]);
-
-  useEffect(() => {
-    getStats();
-  }, [getStats]);
 
   const openResultModal = () => {
     if (resultModalRef.current) {
@@ -343,12 +332,16 @@ TCACTG"
           </div>
 
           <div className="mt-4">
-            <DNAStats
+            {/* <DNAStats
               data={{
                 labels: ["Mutant Count", "Human Count"],
                 datasets: [{ data: [totalMutantCount, totalHumanCount] }],
               }}
-            />
+            /> */}
+            <div className="flex flex-col gap-2 items-center justify-center">
+              <Construction className="h-12 w-12" />
+              <h2 className="text-xl font-semibold">Cooming soon...</h2>
+            </div>
           </div>
         </section>
 
