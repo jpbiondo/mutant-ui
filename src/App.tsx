@@ -14,6 +14,8 @@ import DNAVisualizator from "./components/ui/DNAVisualizator";
 import { stringToVectorDna, vectorToMatrixDna } from "./lib/utils/mutant.utils";
 import { Chart as ChartJS, ArcElement, Legend, Tooltip } from "chart.js";
 import { useMutant } from "./hooks/useMutant";
+import { useMutantStats } from "./hooks/useMutantStats";
+import DNAStats from "./components/ui/DNAStats";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -23,6 +25,13 @@ function App() {
   const [dnaMatrix, setDnaMatrix] = useState<string[][]>([]);
   const resultModalRef = useRef<HTMLDialogElement | null>(null);
   const { isMutant, pending, error, testDna } = useMutant();
+  const {
+    totalHumanCount,
+    totalMutantCount,
+    pending: pendingStats,
+    error: errorStats,
+    getStats,
+  } = useMutantStats();
 
   useEffect(() => {
     if (dnaInput) {
@@ -33,6 +42,10 @@ function App() {
 
     setDnaMatrix([]);
   }, [dnaInput]);
+
+  useEffect(() => {
+    getStats();
+  }, [getStats]);
 
   const openResultModal = () => {
     if (resultModalRef.current) {
@@ -330,17 +343,53 @@ TCACTG"
             </p>
           </div>
 
-          <div className="mt-4">
-            {/* <DNAStats
-              data={{
-                labels: ["Mutant Count", "Human Count"],
-                datasets: [{ data: [totalMutantCount, totalHumanCount] }],
-              }}
-            /> */}
-            <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="mt-4 flex flex-col-reverse gap-8">
+            <div className="w-72 h-72 mx-auto">
+              <DNAStats
+                data={{
+                  labels: ["Mutant Count", "Human Count"],
+                  datasets: [
+                    {
+                      data: [totalMutantCount, totalHumanCount],
+                      backgroundColor: [
+                        "rgba(1, 102, 48, 0.2)",
+                        "rgba(159, 7, 18, 0.2)",
+                      ],
+                      borderColor: ["#016630", "#9f0712"],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+              />
+            </div>
+            <div className=" flex-1 gap-4 text-center">
+              <div>
+                <h2 className="text-2xl">Total DNA Tests</h2>
+                <span className="text-6xl font-semibold">
+                  {totalHumanCount + totalMutantCount}
+                </span>
+              </div>
+              <div className="flex flex-row gap-4 justify-center mt-4">
+                <div>
+                  <h2>Human DNA Results</h2>
+                  <span className="text-4xl font-semibold">
+                    {" "}
+                    {totalHumanCount}
+                  </span>
+                </div>
+                <div>
+                  <h2>Mutant DNA Results</h2>
+                  <span className="text-4xl font-semibold">
+                    {" "}
+                    {totalMutantCount}
+                  </span>
+                </div>
+              </div>
+            </div>
+            {/* <div className="flex flex-col gap-2 items-center justify-center">
               <Construction className="h-12 w-12" />
               <h2 className="text-xl font-semibold">Cooming soon...</h2>
-            </div>
+            </div> */}
           </div>
         </section>
 
