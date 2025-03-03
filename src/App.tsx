@@ -1,7 +1,6 @@
 import {
   Atom,
   ChartLine,
-  Construction,
   Dna,
   DnaOff,
   FlaskConical,
