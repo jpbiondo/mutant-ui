@@ -364,22 +364,26 @@ TCACTG"
             </div>
             <div className=" flex-1 gap-4 text-center">
               <div>
-                <h2 className="text-2xl">Total DNA Tests</h2>
-                <span className="text-6xl font-semibold">
+                <h2 className="text-xl font-semibold">Total DNA Tests</h2>
+                <span className="text-5xl font-bold">
                   {totalHumanCount + totalMutantCount}
                 </span>
               </div>
-              <div className="flex flex-row gap-4 justify-center mt-4">
+              <div className="flex flex-row gap-8 justify-center mt-6">
                 <div>
-                  <h2>Human DNA Results</h2>
-                  <span className="text-4xl font-semibold">
-                    {" "}
-                    {totalHumanCount}
-                  </span>
+                  <h2 className="text-lg font-semibold flex items-center gap-1">
+                    <Dna className="text-red-800" />
+                    <span className="text-red-800">Human</span>
+                    DNA Results
+                  </h2>
+                  <span className="text-3xl font-bold"> {totalHumanCount}</span>
                 </div>
                 <div>
-                  <h2>Mutant DNA Results</h2>
-                  <span className="text-4xl font-semibold">
+                  <h2 className="text-lg font-semibold flex items-center gap-1">
+                    <DnaOff className="text-green-800" />
+                    <span className="text-green-800">Mutant</span> DNA Results
+                  </h2>
+                  <span className="text-3xl font-bold">
                     {" "}
                     {totalMutantCount}
                   </span>
