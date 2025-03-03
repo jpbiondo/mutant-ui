@@ -24,13 +24,7 @@ function App() {
   const [dnaMatrix, setDnaMatrix] = useState<string[][]>([]);
   const resultModalRef = useRef<HTMLDialogElement | null>(null);
   const { isMutant, pending, error, testDna } = useMutant();
-  const {
-    totalHumanCount,
-    totalMutantCount,
-    pending: pendingStats,
-    error: errorStats,
-    getStats,
-  } = useMutantStats();
+  const { totalHumanCount, totalMutantCount, getStats } = useMutantStats();
 
   useEffect(() => {
     if (dnaInput) {
